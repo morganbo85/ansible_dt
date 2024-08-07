@@ -12,4 +12,9 @@
         - vim-nox
         - python3-psutil
 
-
+  - name: copy custom .bashrc file
+    copy:
+      src: files/bashrc
+      dest: /home/bmorgan/.bashrc
+      owner: bmorgan
+      group: bmorgan
