@@ -18,3 +18,23 @@
       dest: /home/bmorgan/.bashrc
       owner: bmorgan
       group: bmorgan
+
+  - name: add ansible user
+    user:
+      name: itst
+      system: yes
+ 
+  - name: set up sudo for ansible user
+    copy:
+      src: files/sudoer_itst
+      dest: /etc/sudoers.d/itst
+      owner: root
+      group: root
+      mode: 0440
+ 
+  - name: add ansible-pull cron job
+    cron:
+      name: ansible auto-provision
+      user: itst
+      minute: "*/10"
+      job: ansible-pull -o -U https://github.com/morganbo85/ansible_dt.git
