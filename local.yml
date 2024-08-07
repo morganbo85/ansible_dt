@@ -49,15 +49,17 @@
     copy:
       src: files/bmorgan.sh
       dest: /etc/profile.d/bmorgan.sh
-      owner: bmorgan
-      group: bmorgan
+      owner: root
+      group: root
+      mode: 0440
 
   - name: copy custom sudoers.d file
     copy:
       src: files/bmorganfs
       dest: /etc/sudoers.d/bmorganfs
-      owner: bmorgan
-      group: bmorgan
+      owner: root
+      group: root
+      mode: 0440
 
   - name: copy custom tmux file
     copy:
@@ -69,7 +71,14 @@
   - name: add ansible user
     user:
       name: itst_ansible
+      group: root
       system: yes
+
+  - name: add ssh key for itst_ansible
+    ansible.builtin.authorized_key:
+      user: itst_ansible
+      key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBDs9OtfjIZdeGRysk1qbj7XuMa+98RDl0fv+x2886DW bmorgan@PMWS59"
+
  
   - name: set up sudo for ansible user
     copy:
