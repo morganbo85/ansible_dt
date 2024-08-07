@@ -16,7 +16,6 @@
     changed_when: False
     when: ansible_distribution in ["Debian", "Ubuntu"]
 
-
   - name: install packages
     package: 
       name: 
@@ -43,6 +42,27 @@
     copy:
       src: files/authorized_keys
       dest: /home/bmorgan/.ssh/authorized_keys
+      owner: bmorgan
+      group: bmorgan
+
+  - name: copy custom profile.d file
+    copy:
+      src: files/bmorgan.sh
+      dest: /etc/profile.d/bmorgan.sh
+      owner: bmorgan
+      group: bmorgan
+
+  - name: copy custom sudoers.d file
+    copy:
+      src: files/bmorganfs
+      dest: /etc/sudoers.d/bmorganfs
+      owner: bmorgan
+      group: bmorgan
+
+  - name: copy custom tmux file
+    copy:
+      src: files/tmux.conf
+      dest: /home/bmorgan/.tmux.conf
       owner: bmorgan
       group: bmorgan
 
