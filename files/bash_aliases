@@ -1,0 +1,36 @@
+# Added by ansible
+alias sshpmws='eval "$(ssh-agent)"; ssh-add ~/.ssh/bmorganpmws'
+alias tree='tree -L 2'
+alias torrstat='sudo journalctl -e -u tor@default'
+alias apt='sudo apt'
+alias nano='sudo nano'
+alias vi='sudo vi'
+alias nyx='sudo nyx'
+alias rsync='rsync -avzh --progress --stats'
+alias dname='docker ps --format '{{.Names}}''
+alias diff='diff -y'
+alias ps='ps -e | more'
+alias shred='sudo shred -fvuzn 5'
+alias nmap='nmap -A -T4'
+alias update='sudo apt update && sudo apt upgrade -y && sudo apt-get clean'
+alias calias='cat ~/.bash_aliases'
+alias sa='source ~/.bash_aliases'
+alias dfl='df -lh | grep -vw snap | grep -v loop | grep -v tmpfs'
+alias cp='cp -iv'
+alias mv='mv -iv'
+alias rm='rm -i'
+alias la='ls -alh'
+alias ping='ping -c 5'
+alias sch='sudo du -sch * | sort -h'
+alias sshost='grep ^Host ~/.ssh/config'
+# View Git status.
+alias gs='git status'
+# Add all files to Git.
+alias gaa='git add --all'
+# Commit changes to the code.
+alias gc='git commit'
+# View the Git log.
+alias gl='git log --pretty=format:"%h%x09%ai%x09%an%x09%x09%s"'
+# View the difference.
+alias gd='git diff'
+
