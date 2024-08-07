@@ -26,7 +26,7 @@
       value: "'file:///usr/share/backgrounds/ansible-wallpaper.png'"
 
   - name: set wallpaper position
-     become_user: bmorgan
+#     become_user: bmorgan
      dconf:
        key: "/org/gnome/desktop/background/picture-options"
        value: "'zoom'"
