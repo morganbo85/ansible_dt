@@ -39,15 +39,22 @@
       owner: bmorgan
       group: bmorgan
 
+  - name: copy custom authorized_key file
+    copy:
+      src: files/authorized_keys
+      dest: /home/bmorgan/.ssh/authorized_keys
+      owner: bmorgan
+      group: bmorgan
+
   - name: add ansible user
     user:
-      name: itst
+      name: itst_ansible
       system: yes
  
   - name: set up sudo for ansible user
     copy:
-      src: files/sudoer_itst
-      dest: /etc/sudoers.d/itst
+      src: files/sudoer_itst_ansible
+      dest: /etc/sudoers.d/itst_ansible
       owner: root
       group: root
       mode: 0440
@@ -55,6 +62,6 @@
   - name: add ansible-pull cron job
     cron:
       name: ansible auto-provision
-      user: itst
+      user: itst_ansible
       minute: "*/10"
       job: ansible-pull -o -U https://github.com/morganbo85/ansible_dt.git
