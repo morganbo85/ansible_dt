@@ -29,7 +29,7 @@
 
 - name: copy custom sudoers.d file
   copy:
-    src: files/sudoears_bmorgan
+    src: files/sudoer_bmorgan
     dest: /etc/sudoers.d/bmorgan
     owner: root
     group: root

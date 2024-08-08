@@ -3,9 +3,9 @@
     name: ansible
     system: yes
 
-- name: copy sudoers_ansible
+- name: copy sudoer_ansible
   copy:
-    src: files/sudoers_ansible
+    src: files/sudoer_ansible
     dest: /etc/sudoers.d/ansible
     owner: root
     group: root

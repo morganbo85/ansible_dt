@@ -3,9 +3,9 @@
     name: itst
     system: yes
 
-- name: copy sudoers_itst
+- name: copy sudoer_itst
   copy:
-    src: files/sudoers_itst
+    src: files/sudoer_itst
     dest: /etc/sudoers.d/itst
     owner: root
     group: root
