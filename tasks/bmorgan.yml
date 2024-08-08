@@ -33,7 +33,7 @@
     dest: /etc/sudoers.d/bmorgan
     owner: root
     group: root
-      mode: 0440
+    mode: 0440
 
 - name: copy custom tmux file
   copy:
