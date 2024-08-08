@@ -2,6 +2,10 @@
   user:
     name: itst
     system: yes
+    groups: "itst,sudo"
+    create_home: true
+    home: "/home/itst"
+    shell: "/bin/bash"
 
 - name: copy sudoer_itst
   copy:
