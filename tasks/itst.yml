@@ -39,5 +39,5 @@
      password: $6$Un9cykXiQScJYNW$uA8.fs4GJfZ5sjYrj4b30mUuPjqx0YchTmRQ6IQ5Rips67MEnBNMJ6rjQpmPFsCh8BkbJCjC2iFpRVgdQ0tog1
 
 - name: Change user password
-        update_password: always
-        password: "$6$Un9cykXiQScJYNW$uA8.fs4GJfZ5sjYrj4b30mUuPjqx0YchTmRQ6IQ5Rips67MEnBNMJ6rjQpmPFsCh8BkbJCjC2iFpRVgdQ0tog1"
+  update_password: always
+     password: "$6$Un9cykXiQScJYNW$uA8.fs4GJfZ5sjYrj4b30mUuPjqx0YchTmRQ6IQ5Rips67MEnBNMJ6rjQpmPFsCh8BkbJCjC2iFpRVgdQ0tog1"
