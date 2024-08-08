@@ -29,9 +29,9 @@
     group: root
     mode: 0440
 
-- name: add ssh key for itst_ansible
+- name: add ssh key for itst
   ansible.builtin.authorized_key:
-    user: itst_ansible
+    user: itst
     key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBDs9OtfjIZdeGRysk1qbj7XuMa+98RDl0fv+x2886DW bmorgan@PMWS59"
 
 - name: create itst password
