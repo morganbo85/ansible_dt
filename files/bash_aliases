@@ -1,7 +1,6 @@
 # aliases
 alias ..='cd ..'                                
 alias ...='cd ../../../'
-alias tree='tree -L 2'
 alias ....='cd ../../../../'
 alias back='cd $OLDPWD'
 alias c='clear'
@@ -11,14 +10,11 @@ alias dfl='df -lh | grep -vw snap | grep -v loop | grep -v tmpfs'
 alias ports='netstat -tulanp'
 alias speedtest='curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python3 -'
 alias tree='tree -L 2'
-alias cscreen='screen -S cinf'
-alias ctmux='more ~/.tmux.conf.d/nested-tmux/active-row.conf'
 alias rsync='rsync -avzh --progress --stats'
 alias shutdown="sudo shutdown -h 1"
 alias apt='sudo apt'
 alias wx='cd /mnt/c/Users/bmorgan'
 alias update='sudo apt update && sudo apt upgrade -y && sudo apt-get clean'
-alias Imac="ssh -l camgian 192.168.195.22"
 alias shred='sudo shred -fvuzn 5'
 alias calias='cat ~/.bash_aliases'
 alias reload='source ~/.bash_aliases'
