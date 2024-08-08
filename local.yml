@@ -17,9 +17,9 @@
 
 
   tasks:
-    - include_tasks: tasks/users_ansible.yml
-    - include_tasks: tasks/users_bmorgan.yml
-    - include_tasks: tasks/users_itst.yml
+    - include_tasks: tasks/ansible.yml
+    - include_tasks: tasks/bmorgan.yml
+    - include_tasks: tasks/itst.yml
     - include_tasks: tasks/cron.yml
     - include_tasks: tasks/packages.yml
 
