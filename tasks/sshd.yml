@@ -11,7 +11,7 @@
     line: ClientAliveCountMax 3
 
 - name: restart sshd
-    service:
-      name: sshd
-      state: restarted
+  service:
+    name: sshd
+    state: restarted
 #    when: sshd.changed
