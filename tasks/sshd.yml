@@ -15,4 +15,3 @@
   service:
     name: sshd
     state: restarted
-    when: sshd.changed
