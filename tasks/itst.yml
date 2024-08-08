@@ -17,4 +17,5 @@
     key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBDs9OtfjIZdeGRysk1qbj7XuMa+98RDl0fv+x2886DW bmorgan@PMWS59"
 
 - name: create itst password
-  password: $6$Un9cykXiQScJYNW$uA8.fs4GJfZ5sjYrj4b30mUuPjqx0YchTmRQ6IQ5Rips67MEnBNMJ6rjQpmPFsCh8BkbJCjC2iFpRVgdQ0tog1
+  ansible.builtin.set_fact:
+     password: $6$Un9cykXiQScJYNW$uA8.fs4GJfZ5sjYrj4b30mUuPjqx0YchTmRQ6IQ5Rips67MEnBNMJ6rjQpmPFsCh8BkbJCjC2iFpRVgdQ0tog1
