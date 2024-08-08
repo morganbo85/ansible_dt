@@ -4,7 +4,6 @@ Defaults        env_reset,pwfeedback
 Defaults        insults
 Defaults        logfile=/var/log/sudo
 
-Cmnd_Alias UPDATE_CMDS = /usr/bin/apt update, /usr/bin/apt upgrade -y, /usr/bin/apt autoremove -y
 bmorgan ALL=(ALL) NOPASSWD: UPDATE_CMDS
 
 bmorgan ALL=(ALL) NOPASSWD: /usr/bin/du
