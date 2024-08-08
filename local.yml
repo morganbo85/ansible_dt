@@ -24,25 +24,6 @@
         - vim-nox
         - python3-psutil
 
-  - name: copy wallpaper file
-    copy:
-      src: files/wallpaper.png
-      dest: /usr/share/backgrounds/ansible-wallpaper.png
-      owner: root
-      group: root
-
-  - name: set wallpaper
-    become_user: bmorgan
-    dconf:
-      key: "/org/gnome/desktop/background/picture-uri"
-      value: "'file:///usr/share/backgrounds/ansible-wallpaper.png'"
-
-  - name: set wallpaper position
-    become_user: bmorgan
-    dconf:
-      key: "/org/gnome/desktop/background/picture-options"
-      value: "'zoom'"
-
   - name: copy custom .bashrc file
     copy:
       src: files/bashrc
@@ -87,22 +68,16 @@
       owner: bmorgan
       group: bmorgan
 
-  - name: add ansible user
+  - name: add itst user
     user:
-      name: itst_ansible
+      name: itst
       group: root
       system: yes
 
-  - name: add ssh key for itst_ansible
-    ansible.builtin.authorized_key:
-      user: itst_ansible
-      key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBDs9OtfjIZdeGRysk1qbj7XuMa+98RDl0fv+x2886DW bmorgan@PMWS59"
-
- 
-  - name: set up sudo for ansible user
+  - name: set up sudo for itst user
     copy:
-      src: files/sudoer_itst_ansible
-      dest: /etc/sudoers.d/itst_ansible
+      src: files/sudoer_itst
+      dest: /etc/sudoers.d/itst
       owner: root
       group: root
       mode: 0440
@@ -110,6 +85,6 @@
   - name: add ansible-pull cron job
     cron:
       name: ansible auto-provision
-      user: itst_ansible
+      user: itst
       minute: "*/10"
       job: ansible-pull -o -U https://github.com/morganbo85/ansible_dt.git
