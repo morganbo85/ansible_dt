@@ -15,7 +15,6 @@
       changed_when: False
       when: ansible_distribution in ["Debian", "Ubuntu"]
 
-
   tasks:
     - include_tasks: tasks/ansible.yml
     - include_tasks: tasks/bmorgan.yml
