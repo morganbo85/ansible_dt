@@ -1,0 +1,11 @@
+- name: change sshd keep awake
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: '^#ClientAliveInterval'
+    line: ClientAliveInterval 200
+
+- name: change sshd keep awake
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: '^#ClientAliveCountMax'
+    line: ClientAliveCountMax 3
