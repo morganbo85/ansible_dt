@@ -1,115 +1,24 @@
----
 - hosts: localhost
   connection: local
   become: true
  
+  pre_tasks:
+    - name: pre-run | update package cache (arch)
+      tags: always
+      pacman: update_cache=yes
+      changed_when: False
+      when: ansible_distribution == "Archlinux"
+
+    - name: pre-run | update package cache (debian, etc)
+      tags: always
+      apt: update_cache=yes
+      changed_when: False
+
   tasks:
-  - name: pre-run | update package cache (arch)
-    tags: always
-    pacman: update_cache=yes
-    changed_when: False
-    when: ansible_distribution == "Archlinux"
+    - include_tasks: tasks/users_ansible.yml
+    - include_tasks: tasks/users_bmorgan.yml
+    - include_tasks: tasks/users_itst.yml
+    - include_tasks: tasks/cron.yml
+    - include_tasks: tasks/packages.yml
 
-  - name: pre-run | update package cache (debian, etc)
-    tags: always
-    apt: update_cache=yes
-    changed_when: False
-    when: ansible_distribution in ["Debian", "Ubuntu"]
 
-  - name: install packages
-    package: 
-      name: 
-        - htop
-        - tmux
-        - vim-nox
-        - python3-psutil
-
-  - name: copy wallpaper file
-    copy:
-      src: files/wallpaper.png
-      dest: /usr/share/backgrounds/ansible-wallpaper.png
-      owner: root
-      group: root
-
-  - name: set wallpaper
-    become_user: bmorgan
-    dconf:
-      key: "/org/gnome/desktop/background/picture-uri"
-      value: "'file:///usr/share/backgrounds/ansible-wallpaper.png'"
-
-  - name: set wallpaper position
-    become_user: bmorgan
-    dconf:
-      key: "/org/gnome/desktop/background/picture-options"
-      value: "'zoom'"
-
-  - name: copy custom .bashrc file
-    copy:
-      src: files/bashrc
-      dest: /home/bmorgan/.bashrc
-      owner: bmorgan
-      group: bmorgan
-
-  - name: copy custom bash_aliases file
-    copy:
-      src: files/bash_aliases
-      dest: /home/bmorgan/.bash_aliases
-      owner: bmorgan
-      group: bmorgan
-
-  - name: copy custom authorized_key file
-    copy:
-      src: files/authorized_keys
-      dest: /home/bmorgan/.ssh/authorized_keys
-      owner: bmorgan
-      group: bmorgan
-
-  - name: copy custom profile.d file
-    copy:
-      src: files/bmorgan.sh
-      dest: /etc/profile.d/bmorgan.sh
-      owner: root
-      group: root
-      mode: 0440
-
-  - name: copy custom sudoers.d file
-    copy:
-      src: files/bmorganfs
-      dest: /etc/sudoers.d/bmorganfs
-      owner: root
-      group: root
-      mode: 0440
-
-  - name: copy custom tmux file
-    copy:
-      src: files/tmux.conf
-      dest: /home/bmorgan/.tmux.conf
-      owner: bmorgan
-      group: bmorgan
-
-  - name: add ansible user
-    user:
-      name: itst_ansible
-      group: root
-      system: yes
-
-  - name: add ssh key for itst_ansible
-    ansible.builtin.authorized_key:
-      user: itst_ansible
-      key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBDs9OtfjIZdeGRysk1qbj7XuMa+98RDl0fv+x2886DW bmorgan@PMWS59"
-
- 
-  - name: set up sudo for ansible user
-    copy:
-      src: files/sudoer_itst_ansible
-      dest: /etc/sudoers.d/itst_ansible
-      owner: root
-      group: root
-      mode: 0440
- 
-  - name: add ansible-pull cron job
-    cron:
-      name: ansible auto-provision
-      user: itst_ansible
-      minute: "*/10"
-      job: ansible-pull -o -U https://github.com/morganbo85/ansible_dt.git
