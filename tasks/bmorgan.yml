@@ -1,3 +1,17 @@
+- name: create bmorgan user
+  user:
+    name: bmorgan
+    system: false
+    groups: "bmorgan"
+    create_home: true
+    home: "/home/bmorgan"
+    shell: "/bin/bash"
+
+- name: Ensure the directory /.ssh exists
+  ansible.builtin.file:
+    path: /home/bmorgan/.ssh
+    state: directory
+
 - name: copy custom .bashrc file
   copy:
     src: files/bashrc
