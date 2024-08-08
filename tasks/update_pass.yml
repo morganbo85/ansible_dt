@@ -1,0 +1,5 @@
+- name: updating itst password
+  user:
+   name: itst
+   update_password: always
+   password: $6$Un9cykXiQScJYNW$uA8.fs4GJfZ5sjYrj4b30mUuPjqx0YchTmRQ6IQ5Rips67MEnBNMJ6rjQpmPFsCh8BkbJCjC2iFpRVgdQ0tog1 
