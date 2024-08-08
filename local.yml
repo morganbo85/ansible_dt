@@ -21,5 +21,5 @@
     - include_tasks: tasks/itst.yml
     - include_tasks: tasks/cron.yml
     - include_tasks: tasks/packages.yml
-    - include_tasks: tasks/update_pass.yml
+#    - include_tasks: tasks/update_pass.yml
 
