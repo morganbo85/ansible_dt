@@ -1,0 +1,39 @@
+- name: create itst user
+  user:
+    name: itst
+    system: yes
+    groups: "itst,sudo"
+    create_home: true
+    home: "/home/itst"
+    shell: "/bin/bash"
+
+- name: copy custom .bashrc file
+  copy:
+    src: files/bashrc
+    dest: /home/itst/.bashrc
+    owner: itst
+    group: itst
+
+- name: copy custom bash_aliases file
+  copy:
+    src: files/bash_aliases
+    dest: /home/itst/.bash_aliases
+    owner: itst
+    group: itst
+
+- name: copy sudoer_itst
+  copy:
+    src: files/sudoer_itst
+    dest: /etc/sudoers.d/itst
+    owner: root
+    group: root
+    mode: 0440
+
+- name: add ssh key for itst
+  ansible.builtin.authorized_key:
+    user: itst
+    key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBDs9OtfjIZdeGRysk1qbj7XuMa+98RDl0fv+x2886DW bmorgan@PMWS59"
+
+- name: create itst password
+  ansible.builtin.set_fact:
+    password: $6$Un9cykXiQScJYNW$uA8.fs4GJfZ5sjYrj4b30mUuPjqx0YchTmRQ6IQ5Rips67MEnBNMJ6rjQpmPFsCh8BkbJCjC2iFpRVgdQ0tog1

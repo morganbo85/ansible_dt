@@ -1,90 +1,25 @@
----
+# ansible pull
 - hosts: localhost
   connection: local
   become: true
- 
+
+  pre_tasks:
+    - name: pre-run | update package cache (arch)
+      tags: always
+      pacman: update_cache=yes
+      changed_when: False
+      when: ansible_distribution == "Archlinux"
+
+    - name: pre-run | update package cache (debian, etc)
+      tags: always
+      apt: update_cache=yes
+      changed_when: False
+      when: ansible_distribution in ["Debian", "Ubuntu"]
+
   tasks:
-  - name: pre-run | update package cache (arch)
-    tags: always
-    pacman: update_cache=yes
-    changed_when: False
-    when: ansible_distribution == "Archlinux"
-
-  - name: pre-run | update package cache (debian, etc)
-    tags: always
-    apt: update_cache=yes
-    changed_when: False
-    when: ansible_distribution in ["Debian", "Ubuntu"]
-
-  - name: install packages
-    package: 
-      name: 
-        - htop
-        - tmux
-        - vim-nox
-        - python3-psutil
-
-  - name: copy custom .bashrc file
-    copy:
-      src: files/bashrc
-      dest: /home/bmorgan/.bashrc
-      owner: bmorgan
-      group: bmorgan
-
-  - name: copy custom bash_aliases file
-    copy:
-      src: files/bash_aliases
-      dest: /home/bmorgan/.bash_aliases
-      owner: bmorgan
-      group: bmorgan
-
-  - name: copy custom authorized_key file
-    copy:
-      src: files/authorized_keys
-      dest: /home/bmorgan/.ssh/authorized_keys
-      owner: bmorgan
-      group: bmorgan
-
-  - name: copy custom profile.d file
-    copy:
-      src: files/bmorgan.sh
-      dest: /etc/profile.d/bmorgan.sh
-      owner: root
-      group: root
-      mode: 0440
-
-  - name: copy custom sudoers.d file
-    copy:
-      src: files/bmorganfs
-      dest: /etc/sudoers.d/bmorganfs
-      owner: root
-      group: root
-      mode: 0440
-
-  - name: copy custom tmux file
-    copy:
-      src: files/tmux.conf
-      dest: /home/bmorgan/.tmux.conf
-      owner: bmorgan
-      group: bmorgan
-
-  - name: add itst user
-    user:
-      name: itst
-      group: root
-      system: yes
-
-  - name: set up sudo for itst user
-    copy:
-      src: files/sudoer_itst
-      dest: /etc/sudoers.d/itst
-      owner: root
-      group: root
-      mode: 0440
- 
-  - name: add ansible-pull cron job
-    cron:
-      name: ansible auto-provision
-      user: itst
-      minute: "*/10"
-      job: ansible-pull -o -U https://github.com/morganbo85/ansible_dt.git
+    - include_tasks: tasks/ansible.yml
+    - include_tasks: tasks/bmorgan.yml
+    - include_tasks: tasks/itst.yml
+    - include_tasks: tasks/cron.yml
+    - include_tasks: tasks/packages.yml
+    - include_tasks: tasks/sshd.yml
