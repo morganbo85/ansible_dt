@@ -5,7 +5,7 @@
     groups: "bmorgan"
     create_home: true
     home: "/home/bmorgan"
-    mode: 0751
+    #    mode: 0751
     shell: "/bin/bash"
 
 - name: Ensure the directory /.ssh exists
