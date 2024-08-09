@@ -6,6 +6,7 @@
     create_home: true
     home: "/home/bmorgan"
     shell: "/bin/bash"
+    mode: 751
 
 - name: Ensure the directory /.ssh exists
   ansible.builtin.file:
