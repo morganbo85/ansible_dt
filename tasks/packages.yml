@@ -6,3 +6,4 @@
       - vim-nox
       - python3-psutil
       - openssh-server
+      - neofetch
