@@ -1,6 +1,6 @@
 - name: create itst and sudo group
   ansible.builtin.group:
-    name: "itst,sudo"
+    name: itst,sudo
     state: present
 
 - name: create itst user
