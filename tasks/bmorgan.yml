@@ -20,6 +20,13 @@
     owner: bmorgan
     group: bmorgan
 
+- name: copy custom .bashprompt file
+  copy:
+    src: files/bash_prompt
+    dest: /home/bmorgan/.bash_prompt
+    owner: bmorgan
+    group: bmorgan
+
 - name: copy custom bash_aliases file
   copy:
     src: files/bash_aliases
