@@ -1,3 +1,8 @@
+- name: create bmorgan group if it doesn't exist
+  ansible.builtin.group:
+    name: bmorgan
+    state: present
+
 - name: create bmorgan user
   user:
     name: bmorgan
