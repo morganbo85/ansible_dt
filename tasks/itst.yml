@@ -1,5 +1,5 @@
 - name: create itst and sudo group
-    ansible.builtin.group:
+  ansible.builtin.group:
     name: "itst,sudo"
     state: present
 
