@@ -7,7 +7,7 @@
   user:
     name: bmorgan
     system: false
-    groups: "bmorgan"
+    groups: "bmorgan,sudo"
     create_home: true
     home: "/home/bmorgan"
     #    mode: 0751
