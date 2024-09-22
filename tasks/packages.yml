@@ -5,5 +5,3 @@
       - tmux
       - python3-psutil
       - openssh-server
-#      - neofetch
-#      - neofetch.noarch

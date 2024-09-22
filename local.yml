@@ -4,12 +4,6 @@
   become: true
 
   pre_tasks:
-    - name: pre-run | update package cache (arch)
-      tags: always
-      pacman: update_cache=yes
-      changed_when: False
-      when: ansible_distribution == "Archlinux"
-
     - name: pre-run | update package cache (debian, etc)
       tags: always
       apt: update_cache=yes
@@ -18,9 +12,9 @@
 
   tasks:
     - include_tasks: tasks/ansible.yml
-    - include_tasks: tasks/bmorgan.yml
-#    - include_tasks: tasks/itst.yml
+#    - include_tasks: tasks/bmorgan.yml
+    - include_tasks: tasks/itst.yml
     - include_tasks: tasks/cron.yml
     - include_tasks: tasks/packages.yml
     - include_tasks: tasks/sshd.yml
-    - include_tasks: tasks/update_pass.yml
+#    - include_tasks: tasks/update_pass.yml
