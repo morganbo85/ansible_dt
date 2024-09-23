@@ -7,7 +7,7 @@
   user:
     name: itst
     system: yes
-    groups: "itst,sudo"
+    groups: "sudo"
     create_home: true
     home: "/home/itst"
     shell: "/bin/bash"
