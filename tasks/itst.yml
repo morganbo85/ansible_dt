@@ -12,6 +12,11 @@
     home: "/home/itst"
     shell: "/bin/bash"
 
+- name: Ensure the directory /.ssh exists
+  ansible.builtin.file:
+    path: /home/itst/.ssh
+    state: directory
+
 - name: copy custom authorized_key file
   copy:
     src: files/itst/authorized_keys
