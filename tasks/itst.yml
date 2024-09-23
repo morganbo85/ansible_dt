@@ -20,7 +20,7 @@
 - name: copy custom authorized_key file
   copy:
     src: files/itst/authorized_keys
-    dest: /home/bmorgan/.ssh/authorized_keys
+    dest: /home/itst/.ssh/authorized_keys
     owner: itst
     group: itst
 
