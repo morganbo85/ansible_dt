@@ -17,6 +17,19 @@
     path: /home/itst/.ssh
     state: directory
 
+- name: create sbin
+  ansible.builtin.file:
+    path: /home/itst/sbin
+    state: directory
+
+- name: copy sbin scripts
+  copy:
+    src: files/itst/sbin/pufferpannel.sh
+    dest: /home/itst/sbin/pufferpannel.sh
+    owner: itst
+    group: itst
+    mode: 700
+
 - name: copy custom authorized_key file
   copy:
     src: files/itst/authorized_keys
