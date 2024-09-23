@@ -23,21 +23,18 @@
     src: files/itst/bashrc
     dest: /home/itst/.bashrc
     owner: itst
-    group: itst
 
 - name: copy custom .bash_prompt file
   copy:
     src: files/itst/bash_prompt
     dest: /home/itst/.bash_prompt
     owner: itst
-    group: itst
 
 - name: copy custom bash_aliases file
   copy:
     src: files/itst/bash_aliases
     dest: /home/itst/.bash_aliases
     owner: itst
-    group: itst
 
 - name: copy sudoer_itst
   copy:
