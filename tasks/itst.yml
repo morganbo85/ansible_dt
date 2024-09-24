@@ -37,11 +37,11 @@
     owner: itst
     group: itst
 
-#- name: updating itst password
-#  user:
-#   name: itst
-#   update_password: always
-#   password: 44af996a0f5037303b630fd260311e1d942f5a5a3d3a31488c5eaf979b10cc6a
+- name: copy tmux cnf
+  copy:
+    src: files/itst/tmux.conf
+    dest: /home/itst/.tmux.conf
+    owner: itst
 
 - name: copy custom .bashrc file
   copy:
