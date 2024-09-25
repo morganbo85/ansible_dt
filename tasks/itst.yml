@@ -16,11 +16,15 @@
   ansible.builtin.file:
     path: /home/itst/.ssh
     state: directory
+    owner: itst
+    group: itst
 
 - name: create sbin
   ansible.builtin.file:
     path: /home/itst/sbin
     state: directory
+    owner: itst
+    group: itst
 
 - name: copy sbin scripts
   copy:
@@ -42,24 +46,28 @@
     src: files/itst/tmux.conf
     dest: /home/itst/.tmux.conf
     owner: itst
+    group: itst
 
 - name: copy custom .bashrc file
   copy:
     src: files/itst/bashrc
     dest: /home/itst/.bashrc
     owner: itst
+    group: itst
 
 - name: copy custom .bash_prompt file
   copy:
     src: files/itst/bash_prompt
     dest: /home/itst/.bash_prompt
     owner: itst
+    group: itst
 
 - name: copy custom bash_aliases file
   copy:
     src: files/itst/bash_aliases
     dest: /home/itst/.bash_aliases
     owner: itst
+    group: itst
 
 - name: copy sudoer_itst
   copy:
