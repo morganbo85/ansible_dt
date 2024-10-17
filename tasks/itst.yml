@@ -34,6 +34,14 @@
     group: itst
     mode: 700
 
+- name: copy sbin scripts
+  copy:
+    src: files/itst/sbin/tor_relay.sh
+    dest: /home/itst/sbin/tor_relay.sh
+    owner: itst
+    group: itst
+    mode: 700
+
 - name: copy custom authorized_key file
   copy:
     src: files/itst/authorized_keys
