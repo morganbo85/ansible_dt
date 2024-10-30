@@ -153,6 +153,4 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-neofetch
-
 source ~/.bash_prompt
