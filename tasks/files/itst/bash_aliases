@@ -15,13 +15,12 @@ alias rsync='rsync -avzh --progress --stats'
 alias shutdown="sudo shutdown -h 1"
 alias apt='sudo apt'
 alias wx='cd /mnt/c/Users/bmorgan'
-alias update='sudo apt update && sudo apt upgrade -y && sudo apt-get clean'
 alias shred='sudo shred -fvuzn 5'
-alias calias='cat ~/.bash_aliases'
+alias showalias='cat ~/.bash_aliases'
 alias reload='source ~/.bash_aliases'
 alias ssha='eval "$(ssh-agent)"; ssh-add ~/.ssh/ansible '
 alias dfl='df -lh | grep -vw snap | grep -v loop | grep -v tmpfs'
-alias dname='docker ps --format "{{.Names}}"'
+alias dname="docker ps --format '{{.Names}}'"
 alias nmap='nmap -A -T4'
 alias ps='ps -e | more'
 alias cp='cp -iv'
@@ -29,18 +28,16 @@ alias mv='mv -iv'
 alias difflines="diff --old-line-format='< %L' --new-line-format='> %L' --unchanged-line-format=''"
 alias la='ls -alh'
 alias ping='ping -c 5'
-alias sch='sudo du -sch * | sort -h'
+alias sch='sudo du -sch * 2>/dev/null | sort -h'
 alias wget='wget -c'
 
 # View Git status.
 alias gs='git status'
 alias sshost='grep ^Host ~/.ssh/config'
 
-# Add all files to Git.
-alias gaa='git add --all'
-
 # Commit changes to the code.
-alias gc='git commit'
+alias gcommit='git commit'
+alias gadd='git add --all'
 alias gpull='git pull'
 alias gpush='git push'
 
@@ -63,7 +60,7 @@ alias dir10='du -cksh * | sort -hr | head -n 10'
 
 # Safetynets
 # do not delete / or prompt if deleting more than 3 files at a time #
-alias rm='rm -I --preserve-root'
+alias rm='rm -I --preserve-root --interactive=once'
 
 # Parenting changing perms on / #
 alias chown='chown --preserve-root'
